@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Ullas 2.0 - Jingle Bells Public School</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;900&family=Yatra+One&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #f1c40f;
+            --gold-dark: #d4af37;
+            --jbs-blue: #0088ff;
+        }
+
+        body, html {
+            margin: 0; padding: 0; width: 100%; height: 100dvh; 
+            background-color: #020202; overflow: hidden; font-family: 'Poppins', sans-serif;
+            display: flex; justify-content: center; align-items: center;
+        }
+
+        /* Premium VIP Gold Border (Thick & Deep) */
+        .main-frame {
+            position: relative; z-index: 10; width: 92%; height: 94dvh;
+            border: 4px solid var(--gold); 
+            outline: 2px solid rgba(241, 196, 15, 0.4); outline-offset: 5px; 
+            border-radius: 25px;
+            box-shadow: 0 0 40px rgba(241, 196, 15, 0.2), inset 0 0 40px rgba(241, 196, 15, 0.15);
+            background: radial-gradient(circle at center, #0a0a1a 0%, #000000 100%);
+            display: flex; flex-direction: column; justify-content: space-between; align-items: center; 
+            padding: 25px 15px; box-sizing: border-box;
+            overflow: hidden; 
+        }
+
+        /* --- GALAXY & METEOR SHOWER BACKGROUND --- */
+        #galaxy-container {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;
+            pointer-events: none;
+        }
+        .star {
+            position: absolute; background: white; border-radius: 50%;
+            animation: twinkle infinite alternate;
+        }
+        @keyframes twinkle {
+            0% { opacity: 0.1; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1.5); box-shadow: 0 0 8px #fff; }
+        }
+
+        .meteor {
+            position: absolute; width: 2px; height: 60px;
+            background: linear-gradient(to bottom, rgba(255,255,255,1), rgba(255,255,255,0));
+            transform: rotate(45deg); opacity: 0;
+            animation: meteorShower linear infinite;
+        }
+        @keyframes meteorShower {
+            0% { transform: translate(0, 0) rotate(45deg); opacity: 1; }
+            100% { transform: translate(400px, 400px) rotate(45deg); opacity: 0; }
+        }
+
+        .top-header, .center-content, .btn-container {
+            z-index: 10; position: relative;
+        }
+
+        /* Top Section: Logo & Name */
+        .top-header {
+            display: flex; align-items: center; gap: 15px; width: 100%;
+            animation: fadeInDown 1s ease;
+        }
+        .logo-box {
+            background: white; padding: 5px; border-radius: 8px; width: 50px; height: 50px;
+            display: flex; justify-content: center; align-items: center;
+            box-shadow: 0 0 15px rgba(255,255,255,0.2);
+        }
+        .logo-box img { width: 100%; height: 100%; object-fit: contain; }
+        .school-name {
+            color: white; font-size: 16px; font-weight: 700; line-height: 1.2;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.8);
+        }
+
+        /* Center Section */
+        .center-content {
+            display: flex; flex-direction: column; align-items: center; text-align: center;
+            transform: translateY(-20px);
+        }
+        
+        .jbs-huge {
+            font-size: 85px; font-weight: 900; margin: 0; line-height: 1; letter-spacing: 2px;
+            background: linear-gradient(180deg, #0044aa 0%, #00aaff 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            animation: musicBeat 0.8s infinite alternate; 
+        }
+        @keyframes musicBeat {
+            0% { transform: scale(1); filter: drop-shadow(0 5px 15px rgba(0, 136, 255, 0.4)); }
+            100% { transform: scale(1.08); filter: drop-shadow(0 15px 35px rgba(0, 136, 255, 0.9)); }
+        }
+
+        .presents {
+            color: white; font-size: 16px; letter-spacing: 5px; margin-top: 10px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+        }
+
+        .ullas-hindi {
+            font-family: 'Yatra One', serif; font-size: 70px; margin: 20px 0 0 0; line-height: 1;
+            background: linear-gradient(180deg, var(--gold-dark) 0%, var(--gold) 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 20px rgba(241, 196, 15, 0.4));
+        }
+        .version {
+            font-size: 80px; font-weight: 900; margin: 0; line-height: 1;
+            background: linear-gradient(180deg, var(--gold-dark) 0%, var(--gold) 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 20px rgba(241, 196, 15, 0.4));
+        }
+
+        .annual-text {
+            color: var(--gold); font-size: 18px; font-weight: 700; letter-spacing: 2px;
+            margin-top: 25px; text-shadow: 0 2px 10px rgba(241, 196, 15, 0.5);
+        }
+
+        /* Bottom Section: Tap to Light Up Button */
+        .btn-container {
+            width: 100%; display: flex; justify-content: center;
+            padding-bottom: 10px;
+        }
+        .tap-btn {
+            background: linear-gradient(90deg, #d4af37, #f1c40f, #d4af37); background-size: 200% auto;
+            color: black; border: none; padding: 18px 40px; border-radius: 40px;
+            font-size: 20px; font-weight: 900; cursor: pointer; width: 85%; max-width: 350px;
+            box-shadow: 0 10px 30px rgba(241, 196, 15, 0.4), inset 0 0 10px rgba(255,255,255,0.5);
+            animation: shine 3s linear infinite, pulseGlow 2s ease-in-out infinite;
+            transition: transform 0.2s;
+        }
+        .tap-btn:active { transform: scale(0.95); }
+
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes shine { to { background-position: 200% center; } }
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 10px 30px rgba(241, 196, 15, 0.4); }
+            50% { box-shadow: 0 10px 40px rgba(241, 196, 15, 0.7); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-frame">
+        <!-- Galaxy Background inside the border -->
+        <div id="galaxy-container"></div>
+
+        <!-- Header -->
+        <div class="top-header">
+            <div class="logo-box">
+                <img src="logo.png" alt="JBS" onerror="this.src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII='">
+            </div>
+            <div class="school-name">Jingle Bells Public<br>School</div>
+        </div>
+
+        <!-- Center Elements -->
+        <div class="center-content">
+            <h1 class="jbs-huge">JBS</h1> 
+            <div class="presents">PRESENTS</div>
+            
+            <h2 class="ullas-hindi">उल्लास</h2>
+            <h2 class="version">2.0</h2>
+            
+            <div class="annual-text">ANNUAL FUNCTION 2026</div>
+        </div>
+
+        <!-- Button with Direct Redirect Action -->
+        <div class="btn-container">
+            <button class="tap-btn" onclick="enterApp()">Tap to Light Up ✨</button>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
+    <script>
+        // 1. FIREBASE SETUP
+        const firebaseConfig = {
+            apiKey: "AIzaSyDdluLR3iRPThrHJgl4Ag-3sCUtWqjeNiA",
+            authDomain: "jbps-voting-app-64e09.firebaseapp.com",
+            databaseURL: "https://jbps-voting-app-64e09-default-rtdb.firebaseio.com",
+            projectId: "jbps-voting-app-64e09",
+            storageBucket: "jbps-voting-app-64e09.firebasestorage.app",
+            messagingSenderId: "21759156292",
+            appId: "1:21759156292:web:9387c446af3e5740efdc11"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+
+        // 2. DIRECT REDIRECT FUNCTION (No Download)
+        function enterApp() {
+            window.location.href = 'engage.html';
+        }
+
+        // 3. DYNAMIC GALAXY GENERATION SCRIPT
+        const galaxyContainer = document.getElementById('galaxy-container');
+        
+        for (let i = 0; i < 70; i++) {
+            let star = document.createElement('div');
+            star.className = 'star';
+            let size = Math.random() * 2 + 1;
+            star.style.width = size + 'px';
+            star.style.height = size + 'px';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDuration = (Math.random() * 1.5 + 0.5) + 's';
+            star.style.animationDelay = Math.random() * 2 + 's';
+            galaxyContainer.appendChild(star);
+        }
+
+        for (let i = 0; i < 5; i++) {
+            let meteor = document.createElement('div');
+            meteor.className = 'meteor';
+            meteor.style.left = (Math.random() * 100 - 20) + '%'; 
+            meteor.style.top = (Math.random() * 50 - 50) + '%';
+            meteor.style.animationDuration = (Math.random() * 2 + 2) + 's';
+            meteor.style.animationDelay = Math.random() * 5 + 's';
+            galaxyContainer.appendChild(meteor);
+        }
+    </script>
+</body>
+            </html>
+            
